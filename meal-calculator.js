@@ -21,7 +21,6 @@ Diner.prototype.getSubtotal = function() {
     this.items.forEach(function(item, index, array) {
         this.subtotal += item.cost;
     }, this);
-    // console.log(this.subtotal);
     return this.subtotal;
 };
 
@@ -32,7 +31,6 @@ Diner.prototype.getBill = function(tax, tip) {
     this.items.forEach(function(item, index, array) {
         console.log(item.name + ': $' + item.cost);
     }, this);
-    // TODO: not sure if this needs to be an array
     console.log('---------------------');
     console.log('Subtotal: $' + this.subtotal);
     console.log('Tax (' + (tax * 100).toFixed(2) + '%): $' + (this.subtotal * tax).toFixed(2));
@@ -66,7 +64,6 @@ Bill.prototype.calculate = function() {
             this.subtotal += dinerName.getSubtotal();
         }, this);
 
-        // TODO: not sure if toFixed is needed here
         this.taxAmt = Number((this.subtotal * this.tax).toFixed(2));
         this.tipAmt = Number((this.subtotal * this.tip).toFixed(2));
         this.total = this.subtotal + Number(this.taxAmt) + Number(this.tipAmt);
